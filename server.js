@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const rowdy = require ('rowdy-logger')
 const userRoutes = require('./routes/userRoutes')
+const cityRoutes = require('./routes/cityRoutes')
 const routesReport = rowdy.begin(app)
 
 app.use(express.json())
@@ -15,3 +16,4 @@ app.listen(PORT, () => {
 })
 
 app.use('/user', userRoutes)
+app.use('/city', cityRoutes)
