@@ -6,5 +6,6 @@ userRoutes.post('/', userController.createNewUser)
 userRoutes.post('/login', userController.login)
 userRoutes.put('/troops', userController.updateTroops)
 userRoutes.get('/:id', userController.getUserInfo)
+userRoutes.put('/:id/troops', userController.deleteTroops)
 
 module.exports = userRoutes

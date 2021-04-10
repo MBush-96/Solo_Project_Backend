@@ -42,8 +42,27 @@ userController.updateTroops = async (req, res) => {
                 id: req.body.id
             }
         })
-        user.infantryInReserve = req.body.infantryInReserve
-        await user.save()
+        const newTroops = parseInt(user.infantryInReserve) + parseInt(req.body.infantryInReserve)
+        await user.update({
+            infantryInReserve: newTroops
+        })
+        res.json({user})
+    } catch (error) {
+        res.json({error: error.message})
+    }
+}
+
+userController.deleteTroops = async (req, res) => {
+    try {
+        const user = await models.user.findOne({
+            where: {
+                id: req.params.id
+            }
+        })
+        const troops = parseInt(user.infantryInReserve) - parseInt(req.body.removeTroops)
+        await user.update({
+            infantryInReserve: troops
+        })
         res.json({user})
     } catch (error) {
         res.json({error: error.message})
