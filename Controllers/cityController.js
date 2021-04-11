@@ -20,13 +20,29 @@ cityController.createNewCity = async (req, res) => {
 
 cityController.getUserCityInfo = async (req, res) => {
     try {
-        console.log(req.params.id);
         const user = await models.user.findOne({
             where: {
                 id: req.params.id
             }
         })
         const city = await user.getCities()
+        res.json({city})
+    } catch (error) {
+        res.json({error: error.message})
+    }
+}
+
+cityController.addCityStationTroops = async (req, res) => {
+    try {
+        const city = await models.city.findOne({
+            where: {
+                id: req.params.id
+            }
+        })
+        const updatedTroopCount = city.infantryInCity + parseInt(req.body.infantryInCity)
+        await city.update({
+            infantryInCity: updatedTroopCount
+        })
         res.json({city})
     } catch (error) {
         res.json({error: error.message})
