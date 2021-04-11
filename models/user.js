@@ -36,6 +36,9 @@ module.exports = (sequelize, DataTypes) => {
         notNull: true,
         isNumeric: true
       }
+    },
+    profileImgSrc: {
+      type: DataTypes.STRING, allowNull: false,
     }
   }, {
     sequelize,

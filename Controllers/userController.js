@@ -10,7 +10,7 @@ userController.createNewUser = async (req, res) => {
                 username: req.body.username,
                 password: req.body.password,
                 infantryInReserve: 0,
-                profileImageSrc: 'https://i.imgur.com/CWExPZG.png'
+                profileImgSrc: 'https://i.imgur.com/CWExPZG.png'
             }
         })
         res.json({user})
