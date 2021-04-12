@@ -53,5 +53,40 @@ cityController.addCityStationTroops = async (req, res) => {
     }
 }
 
+cityController.setTroopsInCity = async (req, res) => {
+    try {
+        const city = await models.city.findOne({
+            where: {
+                id: req.params.id
+            }
+        })
+        await city.update({
+            infantryInCity: req.body.infantryInCity
+        })
+        res.json({city})
+    } catch (error) {
+        res.json({error: error.message})
+    }
+}
+
+cityController.updateOwner = async (req, res) => {
+    try {
+        const user = await models.user.findOne({
+            where: {
+                id: req.body.newOwner
+            }
+        })
+        const city = await models.city.findOne({
+            where: {
+                id: req.params.id
+            }
+        })
+        city.setUser(user)
+        res.json({city})
+    } catch (error) {
+        res.json({error: error.message})
+    }
+}
+
 
 module.exports = cityController

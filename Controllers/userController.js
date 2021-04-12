@@ -60,9 +60,11 @@ userController.deleteTroops = async (req, res) => {
                 id: req.params.id
             }
         })
-        const troops = parseInt(user.infantryInReserve) - parseInt(req.body.removeTroops)
+        const troops = parseInt(user.infantryInReserve) - parseInt(req.body.infantryInReserve)
+        console.log(typeof troops);
+        console.log(troops);
         await user.update({
-            infantryInReserve: troops
+            infantryInReserve: parseInt(troops)
         })
         res.json({user})
     } catch (error) {
