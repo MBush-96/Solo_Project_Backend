@@ -1,8 +1,8 @@
 const express = require('express')
 const app = express()
 const rowdy = require ('rowdy-logger')
-const userRoutes = require('./routes/userRoutes')
-const cityRoutes = require('./routes/cityRoutes')
+const userRoutes = require('./Routes/userRoutes')
+const cityRoutes = require('./Routes/cityRoutes')
 const routesReport = rowdy.begin(app)
 const PATH = require('path')
 
