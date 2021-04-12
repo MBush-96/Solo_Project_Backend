@@ -4,6 +4,7 @@ const rowdy = require ('rowdy-logger')
 const userRoutes = require('./routes/userRoutes')
 const cityRoutes = require('./routes/cityRoutes')
 const routesReport = rowdy.begin(app)
+const PATH = require('path')
 
 app.use(express.json())
 app.use(require('cors')())
@@ -15,5 +16,6 @@ app.listen(PORT, () => {
   routesReport.print()
 })
 
+app.get('/', (req, res) => {res.send('hi')})
 app.use('/user', userRoutes)
 app.use('/city', cityRoutes)
