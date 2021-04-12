@@ -45,7 +45,7 @@ cityController.addCityStationTroops = async (req, res) => {
             infantryInCity: updatedTroopCount
         })
         await user.update({
-            infantryInReserve: infantryInReserve - parseInt(req.body.infantryInCity)
+            infantryInReserve: user.infantryInReserve - parseInt(req.body.infantryInCity)
         })
         res.json({city})
     } catch (error) {
