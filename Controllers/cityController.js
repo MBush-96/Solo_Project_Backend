@@ -39,7 +39,7 @@ cityController.addCityStationTroops = async (req, res) => {
                 id: req.params.id
             }
         })
-        const user = city.getUser()
+        const user = await city.getUser()
         const updatedTroopCount = city.infantryInCity + parseInt(req.body.infantryInCity)
         await city.update({
             infantryInCity: updatedTroopCount
